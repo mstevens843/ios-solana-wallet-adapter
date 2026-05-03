@@ -1,10 +1,11 @@
 # Docs
 
-This folder will host the public documentation site once the protocol settles. Phase 1 only ships the research trail.
+This folder contains the demo guide, protocol support docs, and wallet research trail for iWA.
 
 ## Contents
 
-- [`research/`](./research) — captured findings from the wallet-by-wallet survey that informed the iWA v0.1 spec. Each file is a short, raw record of what each wallet's published docs say about transport, methods, and crypto, with TODOs for items still being verified.
+- [`demo.md`](./demo.md) - complete SwiftUI URL/callback flow for a demo app.
+- [`research/`](./research) - captured findings from the wallet-by-wallet survey that informed the iWA v0.1 spec.
 
 ## Pointers
 

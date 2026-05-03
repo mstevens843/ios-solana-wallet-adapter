@@ -1,4 +1,4 @@
-# Phantom — research notes (2026-05-03)
+# Phantom - research notes (2026-05-03)
 
 Source: <https://docs.phantom.com/phantom-deeplinks/deeplinks-ios-and-android>
 

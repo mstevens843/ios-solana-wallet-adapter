@@ -5,7 +5,7 @@ import Foundation
 /// and used either directly or through `WalletAdapter`.
 ///
 /// Phase 1 surface is intentionally small: connect / disconnect / sign. Method
-/// signatures are sketched as `async throws` — the actual continuation pattern
+/// signatures are sketched as `async throws` - the actual continuation pattern
 /// (URL-callback bridging into a continuation) is finalized in Phase 2.
 public protocol WalletProvider: Sendable {
     /// Stable identifier for the wallet, e.g. "phantom", "solflare", "backpack".

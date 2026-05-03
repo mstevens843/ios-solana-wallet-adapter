@@ -1,6 +1,6 @@
-# iOS Wallet Adapter Protocol — iWA v0.1 (draft)
+# iOS Wallet Adapter Protocol - iWA v0.1 (draft)
 
-> **Status:** draft. Subject to breaking changes until v1.0.
+> **Status:** draft, implemented by the Swift package through the pure URL/callback layer. Subject to breaking changes until v1.0.
 
 ## Goal
 
@@ -8,7 +8,7 @@ Define a single iOS-native protocol for dApps to request Solana wallet operation
 
 The dApp never sees the user's private key. Each operation surfaces an approval screen inside the wallet app and bounces the user back to the dApp via a redirect URL.
 
-This is **not** the Mobile Wallet Adapter (MWA). MWA is Android-only by design (Android Intents + localhost WebSocket). iWA is a different protocol class — universal-link / custom-scheme based, request/response, no persistent session at the OS level.
+This is **not** the Mobile Wallet Adapter (MWA). MWA is Android-only by design (Android Intents + localhost WebSocket). iWA is a different protocol class - universal-link / custom-scheme based, request/response, no persistent session at the OS level.
 
 ## Non-goals
 
@@ -47,7 +47,19 @@ Adding a wallet requires (1) a published deeplink spec from the wallet team that
 - **Encryption:** XSalsa20-Poly1305, as packaged by NaCl `box`. Same primitive used by `tweetnacl` (the JS reference) and `Tokr-Labs/phantom-connect` (the existing Swift Phantom-only implementation).
 - **Wire encoding:** Base58 (Bitcoin alphabet) for public keys, nonces, and ciphertexts.
 
-> Phase 1 ships type stubs only for the crypto layer. Phase 2 wires CryptoKit + a vendored XSalsa20 implementation (or a TweetNaCl-Swift port) and verifies round-trips against Phantom on a real device. Each wallet's encryption sub-page is being read in `docs/research/` to catch any divergence.
+The Swift package implements this layer with CryptoKit X25519 key agreement and a vendored TweetNaCl-compatible XSalsa20-Poly1305 implementation. The test suite includes deterministic vectors and authentication-failure cases.
+
+## Swift Package API
+
+The high-level app API is `WalletAdapter`. It owns the selected provider, the dApp ephemeral keypair, the active session, and the selected cluster. It builds request URLs and decodes callback URLs, but it does not open URLs or hold app lifecycle continuations.
+
+```swift
+let adapter = WalletAdapter(provider: PhantomAdapter(), cluster: .devnet)
+let url = try adapter.connectURL(appURL: appURL, redirectLink: redirect, cluster: .devnet)
+let session = try adapter.handleConnectCallback(callbackURL)
+```
+
+After connect, the same adapter builds encrypted signing URLs and decodes the encrypted callback payloads for `signMessage`, `signTransaction`, `signAllTransactions`, `signAndSendTransaction`, and `disconnect`.
 
 ## Methods
 
@@ -57,19 +69,19 @@ Adding a wallet requires (1) a published deeplink spec from the wallet team that
 
 **Required query params:**
 
-- `app_url` — URL the wallet uses to fetch metadata (title, icon). Must be URL-encoded.
-- `dapp_encryption_public_key` — base58 of the dApp's ephemeral X25519 public key.
-- `redirect_link` — URL the wallet will open with the response. Must be URL-encoded.
+- `app_url` - URL the wallet uses to fetch metadata (title, icon). Must be URL-encoded.
+- `dapp_encryption_public_key` - base58 of the dApp's ephemeral X25519 public key.
+- `redirect_link` - URL the wallet will open with the response. Must be URL-encoded.
 
 **Optional:**
 
-- `cluster` — one of `mainnet-beta`, `devnet`, `testnet`. Default: `mainnet-beta`.
+- `cluster` - one of `mainnet-beta`, `devnet`, `testnet`. Default: `mainnet-beta`.
 
 **Success response (delivered as query params on `redirect_link`):**
 
-- `<wallet>_encryption_public_key` (or wallet-specific name like Backpack's `wallet_xxx`) — wallet's X25519 public key, base58.
-- `nonce` — base58, 24 bytes for XSalsa20.
-- `data` — base58 of the NaCl-box ciphertext over a JSON object `{ "public_key": "<user-base58>", "session": "<token>" }`.
+- `<wallet>_encryption_public_key` (or wallet-specific name like Backpack's `wallet_xxx`) - wallet's X25519 public key, base58.
+- `nonce` - base58, 24 bytes for XSalsa20.
+- `data` - base58 of the NaCl-box ciphertext over a JSON object `{ "public_key": "<user-base58>", "session": "<token>" }`.
 
 **Error response:** `errorCode` and `errorMessage` query params.
 
@@ -184,6 +196,8 @@ iWA-conformant dApps therefore SHOULD:
 ## Known gaps for v0.2
 
 - Multi-tx approval batching with structured display metadata.
+- UIKit / SwiftUI convenience wrappers that call `openURL` and bridge callbacks into async continuations.
+- Real-device smoke logs against Phantom, Solflare, and Backpack.
 - Hardware wallet hand-off (Ledger over BLE).
 - SIWS (Sign-In With Solana) as a first-class method instead of overloading `signMessage`.
 - Deferred-response delivery for cases where the dApp is killed mid-flow.

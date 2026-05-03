@@ -1,4 +1,4 @@
-# Glow — research notes (2026-05-03)
+# Glow - research notes (2026-05-03)
 
 ## Status: held out of v0.1 wallet set pending verification.
 
@@ -6,7 +6,7 @@
 
 Source: Solana Mobile's "Wallet Signing on iOS" blog post (<https://docs.solanamobile.com/blog/ios-wallet-signing>).
 
-Solana Mobile cites Glow as an exemplar for **Safari Web Extensions** for wallet signing — not as a deeplink-protocol implementer. Quote from the blog:
+Solana Mobile cites Glow as an exemplar for **Safari Web Extensions** for wallet signing - not as a deeplink-protocol implementer. Quote from the blog:
 
 > The Glow app is a native iOS wallet that also provides a Safari Web Extension for wallet signing while browsing Safari.
 

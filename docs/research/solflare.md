@@ -1,4 +1,4 @@
-# Solflare — research notes (2026-05-03)
+# Solflare - research notes (2026-05-03)
 
 Source: <https://docs.solflare.com/solflare/technical/deeplinks>
 

@@ -1,4 +1,4 @@
-# Backpack — research notes (2026-05-03)
+# Backpack - research notes (2026-05-03)
 
 Source: <https://docs.backpack.app/deeplinks/provider-methods/connect>
 
@@ -6,22 +6,22 @@ Source: <https://docs.backpack.app/deeplinks/provider-methods/connect>
 
 - Universal link: `https://backpack.app/ul/v1/<method>`
 
-## `connect` — required params
+## `connect` - required params
 
-- `app_url` — URL providing app metadata (title, icon). Must be URL-encoded.
-- `dapp_encryption_public_key` — public key for end-to-end encryption.
-- `redirect_link` — URI where Backpack should redirect on completion.
+- `app_url` - URL providing app metadata (title, icon). Must be URL-encoded.
+- `dapp_encryption_public_key` - public key for end-to-end encryption.
+- `redirect_link` - URI where Backpack should redirect on completion.
 
-## `connect` — optional params
+## `connect` - optional params
 
-- `cluster` — defaults to `mainnet-beta` if unset.
+- `cluster` - defaults to `mainnet-beta` if unset.
 
 ## Response shape (from Backpack docs)
 
 - Approval (success):
-  - `wallet_xxx` — wallet's encryption public key (base58)
-  - `nonce` — base58, used for decryption
-  - `data` — base58 of the encrypted payload
+  - `wallet_xxx` - wallet's encryption public key (base58)
+  - `nonce` - base58, used for decryption
+  - `data` - base58 of the encrypted payload
 - Decrypted payload contains:
   - `public_key`
   - `session`
