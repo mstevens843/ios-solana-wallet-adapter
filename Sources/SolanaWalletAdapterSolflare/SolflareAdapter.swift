@@ -10,6 +10,16 @@ public struct SolflareAdapter: WalletProvider {
 
     public init() {}
 
+    public var capabilities: WalletProviderCapabilities {
+        WalletProviderCapabilities(
+            walletId: walletId,
+            displayName: "Solflare",
+            universalLinkHost: universalLinkHost,
+            customScheme: customScheme,
+            methods: WalletMethod.nativeDeeplinkProtocolMethods.map { .init(method: $0) }
+        )
+    }
+
     public func connectURL(request: ConnectRequest) throws -> URL {
         let host = DeeplinkURL.WalletHost(
             universalLinkHost: universalLinkHost,

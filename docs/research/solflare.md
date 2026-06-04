@@ -22,10 +22,12 @@ Source: <https://docs.solflare.com/solflare/technical/deeplinks>
 
 ## Crypto
 
-- Index page calls out universal-link transport but doesn't name the cipher. Sub-pages (`/connect`, `/signtransaction`) describe `nonce` + `payload` patterns consistent with NaCl box.
-- TODO: verify against a per-method sub-page.
+- Solflare's encryption page documents `dapp_encryption_public_key`, a fresh x25519 keypair for each connect session, and a wallet-returned `solflare_encryption_public_key`.
+- The same page points implementers to TweetNaCl resources for encryption/decryption.
+- The Swift implementation uses CryptoKit X25519 key agreement and a TweetNaCl-compatible NaCl box layer.
 
 ## References
 
 - Sample app (React Native): <https://github.com/solflare-wallet/deep-link-sample-app>
 - JS SDK (different surface, useful for envelope shape): <https://github.com/solflare-wallet/solflare-sdk>
+- Encryption: <https://docs.solflare.com/solflare/technical/deeplinks/encryption>

@@ -3,10 +3,6 @@ import Foundation
 /// A wallet provider implements the iWA v0.1 protocol for one specific wallet
 /// (Phantom, Solflare, Backpack, ...). Adapters are constructed by the consumer
 /// and used either directly or through `WalletAdapter`.
-///
-/// Phase 1 surface is intentionally small: connect / disconnect / sign. Method
-/// signatures are sketched as `async throws` - the actual continuation pattern
-/// (URL-callback bridging into a continuation) is finalized in Phase 2.
 public protocol WalletProvider: Sendable {
     /// Stable identifier for the wallet, e.g. "phantom", "solflare", "backpack".
     var walletId: String { get }
@@ -17,11 +13,13 @@ public protocol WalletProvider: Sendable {
     /// Custom URL scheme fallback, e.g. "phantom".
     var customScheme: String { get }
 
+    /// Static wallet metadata and method support exposed by client capability
+    /// introspection.
+    var capabilities: WalletProviderCapabilities { get }
+
     /// Build the connect URL for this wallet given the app's ephemeral
     /// encryption keypair and the redirect destination the wallet should
     /// bounce the user back to.
-    ///
-    /// Phase 1 returns the URL only. Phase 2 wires the response handler.
     func connectURL(request: ConnectRequest) throws -> URL
 }
 

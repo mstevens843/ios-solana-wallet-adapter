@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+  <radialGradient id="bg" cx="48%" cy="38%" r="75%"><stop offset="0%" stop-color="#15363a"/><stop offset="48%" stop-color="#071419"/><stop offset="100%" stop-color="#010408"/></radialGradient>
+  <linearGradient id="screen" x1="0" x2="1" y1="1" y2="0"><stop offset="0" stop-color="#0f172a"/><stop offset=".45" stop-color="#165a67"/><stop offset="1" stop-color="#19f6b0"/></linearGradient>
+  <linearGradient id="solana" x1="0" x2="1" y1="1" y2="0"><stop offset=".08" stop-color="#9945FF"/><stop offset=".42" stop-color="#5497D5"/><stop offset=".97" stop-color="#14F195"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000" flood-opacity=".36"/></filter>
+  <style>
+    .eyebrow{font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;font-weight:800;letter-spacing:7px;fill:#7fffe2}
+    .title{font-family:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;font-weight:900;letter-spacing:0;fill:#f8fbff}
+    .sub{font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;font-weight:700;letter-spacing:5px;fill:#cdd7df}
+    .foot{font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;font-weight:800;letter-spacing:8px;fill:#7c8791}
+  </style>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<g opacity=".34" fill="#d6f9ff">
+  <circle cx="86.4" cy="129.6" r="2"/><circle cx="216" cy="885.5999999999999" r="1.5"/><circle cx="421.2" cy="140.4" r="1.8"/><circle cx="658.8" cy="918" r="1.8"/><circle cx="928.8" cy="194.4" r="2"/><circle cx="1015.1999999999999" cy="810" r="1.5"/>
+</g>
+
+<g filter="url(#shadow)">
+  <rect x="410" y="86.4" width="260" height="499.2" rx="41.6" fill="#071017" stroke="#dce7ef" stroke-width="4.68"/>
+  <rect x="433.4" y="131.328" width="213.2" height="409.344" rx="23.4" fill="url(#screen)"/>
+  <rect x="501" y="103.87200000000001" width="78" height="8.9856" rx="4.4928" fill="#dce7ef" opacity=".9"/>
+  <circle cx="540" cy="558.144" r="6.5" fill="#dce7ef" opacity=".8"/>
+  <path d="M475 326.01599999999996h130v124.8h-130z" fill="#06121a" opacity=".5"/>
+  <path d="M495.8 326.01599999999996v-39.936c0-39.936 18.200000000000003-69.888 44.2-69.888s44.2 29.951999999999998 44.2 69.888v39.936" fill="none" stroke="#f6fbff" stroke-width="6.5" stroke-linecap="round"/>
+</g>
+<g transform="translate(456 453.59999999999997) scale(1.68)" filter="url(#shadow)"><path fill="url(#solana)" d="M86.619 69.036 74.403 82.101a2.837 2.837 0 0 1-2.075.899h-57.91a1.421 1.421 0 0 1-1.3-.85 1.411 1.411 0 0 1 .263-1.53l12.225-13.064a2.837 2.837 0 0 1 2.07-.899h57.906a1.423 1.423 0 0 1 1.3.85 1.412 1.412 0 0 1-.263 1.53ZM74.403 42.727a2.837 2.837 0 0 0-2.075-.898h-57.91a1.421 1.421 0 0 0-1.3.85 1.412 1.412 0 0 0 .263 1.529l12.225 13.065a2.84 2.84 0 0 0 2.07.898h57.906a1.422 1.422 0 0 0 1.3-.85 1.412 1.412 0 0 0-.263-1.529L74.403 42.727Zm-59.985-9.384h57.91a2.844 2.844 0 0 0 2.075-.899l12.216-13.065A1.414 1.414 0 0 0 85.582 17H27.676a2.845 2.845 0 0 0-2.07.899L13.384 30.964a1.412 1.412 0 0 0 1.034 2.379Z"/></g>
+<text class="eyebrow" x="540" y="621.1" text-anchor="middle" font-size="21">PUBLIC RC</text>
+<text class="title" x="540" y="723.6" text-anchor="middle" font-size="82" textLength="842.4" lengthAdjust="spacingAndGlyphs">iOS Wallet Adapter</text>
+<text class="sub" x="540" y="793.3000000000001" text-anchor="middle" font-size="31">NATIVE DEEPLINK SIGNING</text>
+<text class="foot" x="540" y="961.2" text-anchor="middle" font-size="19">PHANTOM · SOLFLARE · BACKPACK</text>
+<text class="foot" x="540" y="1009.25" text-anchor="middle" font-size="15">0.2.0-rc.1 · SWIFT PACKAGE</text>
+</svg>

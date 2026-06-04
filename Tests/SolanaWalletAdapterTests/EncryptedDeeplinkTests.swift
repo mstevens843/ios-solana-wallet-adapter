@@ -22,6 +22,7 @@ final class EncryptedDeeplinkTests: XCTestCase {
             "phantom_encryption_public_key",
             "solflare_encryption_public_key",
             "wallet_encryption_public_key",
+            "wallet_xxx",
         ] {
             let url = try responseURL(
                 publicKeyAlias: alias,
@@ -76,6 +77,17 @@ final class EncryptedDeeplinkTests: XCTestCase {
 
         let signAndSendURL = try responseURL(payload: ["signature": "Txid111111111111111111111111111111111111"])
         XCTAssertEqual(try WalletResponseDecoder.signAndSendTransactionResult(from: signAndSendURL, session: session, keypair: dapp).signature, "Txid111111111111111111111111111111111111")
+    }
+
+    func testSignAndSendRejectsNonBase58Signature() throws {
+        let session = Session(walletEncryptionPublicKey: wallet.publicKey, token: "token-123", userPublicKey: "user")
+        // "0OIl" are all outside the base58 alphabet, so decode returns nil.
+        let url = try responseURL(payload: ["signature": "not-base58-0OIl"])
+        XCTAssertThrowsError(try WalletResponseDecoder.signAndSendTransactionResult(from: url, session: session, keypair: dapp)) { error in
+            guard case WalletAdapterError.malformedPayload = error else {
+                return XCTFail("expected .malformedPayload, got \(error)")
+            }
+        }
     }
 
     func testDocumentedErrorCodesMapToWalletAdapterErrors() {

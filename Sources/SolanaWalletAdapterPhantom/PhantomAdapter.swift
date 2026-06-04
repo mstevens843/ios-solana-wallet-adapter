@@ -4,15 +4,33 @@ import SolanaWalletAdapterCore
 
 /// Phantom-specific iWA v0.1 adapter.
 ///
-/// Phase 1: builds the `connect` URL per the protocol shape documented at
-/// `docs/research/phantom.md`. Subsequent methods (signMessage, signTransaction,
-/// signAndSendTransaction) ship in Phase 2 once the NaCl box layer is wired.
 public struct PhantomAdapter: WalletProvider {
     public let walletId = "phantom"
     public let universalLinkHost = "phantom.app"
     public let customScheme = "phantom"
 
     public init() {}
+
+    public var capabilities: WalletProviderCapabilities {
+        WalletProviderCapabilities(
+            walletId: walletId,
+            displayName: "Phantom",
+            universalLinkHost: universalLinkHost,
+            customScheme: customScheme,
+            methods: [
+                .init(method: .connect),
+                .init(method: .disconnect),
+                .init(method: .signMessage),
+                .init(method: .signTransaction),
+                .init(method: .signAllTransactions),
+                .init(
+                    method: .signAndSendTransaction,
+                    isDeprecated: true,
+                    note: "Phantom marks signAndSendTransaction as deprecated; prefer signTransaction followed by app-side send."
+                ),
+            ]
+        )
+    }
 
     public func connectURL(request: ConnectRequest) throws -> URL {
         let host = DeeplinkURL.WalletHost(

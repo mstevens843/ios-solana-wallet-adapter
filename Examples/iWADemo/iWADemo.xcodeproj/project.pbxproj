@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A0000010000000000000001 /* iWADemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000010000000000000011 /* iWADemoApp.swift */; };
+		1A0000010000000000000002 /* WalletDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000010000000000000012 /* WalletDemoView.swift */; };
+		1A0000010000000000000003 /* DemoLogRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0000010000000000000013 /* DemoLogRecorder.swift */; };
+		1A0000010000000000000004 /* SolanaWalletAdapter in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000010000000000000031 /* SolanaWalletAdapter */; };
+		1A0000010000000000000005 /* SolanaWalletAdapterPhantom in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000010000000000000032 /* SolanaWalletAdapterPhantom */; };
+		1A0000010000000000000006 /* SolanaWalletAdapterSolflare in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000010000000000000033 /* SolanaWalletAdapterSolflare */; };
+		1A0000010000000000000007 /* SolanaWalletAdapterBackpack in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000010000000000000034 /* SolanaWalletAdapterBackpack */; };
+		1A0000010000000000000008 /* SolanaWalletAdapterUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000010000000000000035 /* SolanaWalletAdapterUI */; };
+		1A0000010000000000000009 /* SolanaWalletAdapterPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000010000000000000036 /* SolanaWalletAdapterPicker */; };
+		1A00000100000000000000A1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000100000000000000A2 /* HomeView.swift */; };
+		1A00000100000000000000A3 /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000100000000000000A4 /* ConnectView.swift */; };
+		1A00000100000000000000A5 /* DemoTransactionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000100000000000000A6 /* DemoTransactionBuilder.swift */; };
+		1A00000100000000000000B1 /* DemoEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000100000000000000B2 /* DemoEnvironment.swift */; };
+		1A00000100000000000000B3 /* IWASecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000100000000000000B4 /* IWASecrets.swift */; };
+		1A00000100000000000000B6 /* SolanaWalletAdapterWalletConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 1A00000100000000000000B5 /* SolanaWalletAdapterWalletConnect */; };
+		1A00000100000000000000C1 /* ReownWalletConnectSolanaTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000100000000000000C2 /* ReownWalletConnectSolanaTransport.swift */; };
+		1A00000100000000000000C3 /* ReownURLSessionWebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00000100000000000000C4 /* ReownURLSessionWebSocket.swift */; };
+		1A0000020000000000000021 /* WalletConnect in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000020000000000000011 /* WalletConnect */; };
+		1A0000020000000000000022 /* WalletConnectNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000020000000000000012 /* WalletConnectNetworking */; };
+		1A0000020000000000000023 /* WalletConnectPairing in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000020000000000000013 /* WalletConnectPairing */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A0000010000000000000010 /* iWADemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWADemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A0000010000000000000011 /* iWADemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iWADemoApp.swift; sourceTree = "<group>"; };
+		1A0000010000000000000012 /* WalletDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDemoView.swift; sourceTree = "<group>"; };
+		1A0000010000000000000013 /* DemoLogRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLogRecorder.swift; sourceTree = "<group>"; };
+		1A00000100000000000000A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1A00000100000000000000A4 /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
+		1A00000100000000000000A6 /* DemoTransactionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTransactionBuilder.swift; sourceTree = "<group>"; };
+		1A00000100000000000000B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A00000100000000000000B2 /* DemoEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEnvironment.swift; sourceTree = "<group>"; };
+		1A00000100000000000000B4 /* IWASecrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generated/IWASecrets.swift; sourceTree = "<group>"; };
+		1A00000100000000000000C2 /* ReownWalletConnectSolanaTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReownWalletConnectSolanaTransport.swift; sourceTree = "<group>"; };
+		1A00000100000000000000C4 /* ReownURLSessionWebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReownURLSessionWebSocket.swift; sourceTree = "<group>"; };
+		1A00000100000000000000D2 /* iWADemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iWADemo.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A0000010000000000000021 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000010000000000000004 /* SolanaWalletAdapter in Frameworks */,
+				1A0000010000000000000005 /* SolanaWalletAdapterPhantom in Frameworks */,
+				1A0000010000000000000006 /* SolanaWalletAdapterSolflare in Frameworks */,
+				1A0000010000000000000007 /* SolanaWalletAdapterBackpack in Frameworks */,
+				1A0000010000000000000008 /* SolanaWalletAdapterUI in Frameworks */,
+				1A0000010000000000000009 /* SolanaWalletAdapterPicker in Frameworks */,
+				1A00000100000000000000B6 /* SolanaWalletAdapterWalletConnect in Frameworks */,
+				1A0000020000000000000021 /* WalletConnect in Frameworks */,
+				1A0000020000000000000022 /* WalletConnectNetworking in Frameworks */,
+				1A0000020000000000000023 /* WalletConnectPairing in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A0000010000000000000041 = {
+			isa = PBXGroup;
+			children = (
+				1A0000010000000000000042 /* iWADemo */,
+				1A0000010000000000000043 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A0000010000000000000042 /* iWADemo */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000010000000000000011 /* iWADemoApp.swift */,
+				1A0000010000000000000012 /* WalletDemoView.swift */,
+				1A0000010000000000000013 /* DemoLogRecorder.swift */,
+				1A00000100000000000000A2 /* HomeView.swift */,
+				1A00000100000000000000A4 /* ConnectView.swift */,
+				1A00000100000000000000A6 /* DemoTransactionBuilder.swift */,
+				1A00000100000000000000C2 /* ReownWalletConnectSolanaTransport.swift */,
+				1A00000100000000000000C4 /* ReownURLSessionWebSocket.swift */,
+				1A00000100000000000000B2 /* DemoEnvironment.swift */,
+				1A00000100000000000000B4 /* IWASecrets.swift */,
+				1A00000100000000000000D2 /* iWADemo.entitlements */,
+				1A00000100000000000000B0 /* Info.plist */,
+			);
+			path = iWADemo;
+			sourceTree = "<group>";
+		};
+		1A0000010000000000000043 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000010000000000000010 /* iWADemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A0000010000000000000051 /* iWADemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A0000010000000000000061 /* Build configuration list for PBXNativeTarget "iWADemo" */;
+			buildPhases = (
+				1A0000010000000000000022 /* Sources */,
+				1A0000010000000000000021 /* Frameworks */,
+				1A0000010000000000000023 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iWADemo;
+			packageProductDependencies = (
+				1A0000010000000000000031 /* SolanaWalletAdapter */,
+				1A0000010000000000000032 /* SolanaWalletAdapterPhantom */,
+				1A0000010000000000000033 /* SolanaWalletAdapterSolflare */,
+				1A0000010000000000000034 /* SolanaWalletAdapterBackpack */,
+				1A0000010000000000000035 /* SolanaWalletAdapterUI */,
+				1A0000010000000000000036 /* SolanaWalletAdapterPicker */,
+				1A00000100000000000000B5 /* SolanaWalletAdapterWalletConnect */,
+				1A0000020000000000000011 /* WalletConnect */,
+				1A0000020000000000000012 /* WalletConnectNetworking */,
+				1A0000020000000000000013 /* WalletConnectPairing */,
+			);
+			productName = iWADemo;
+			productReference = 1A0000010000000000000010 /* iWADemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A0000010000000000000050 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					1A0000010000000000000051 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+				};
+			};
+			buildConfigurationList = 1A0000010000000000000060 /* Build configuration list for PBXProject "iWADemo" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A0000010000000000000041;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1A0000010000000000000030 /* XCLocalSwiftPackageReference "../.." */,
+				1A0000020000000000000001 /* XCRemoteSwiftPackageReference "reown-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 1A0000010000000000000043 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A0000010000000000000051 /* iWADemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A0000010000000000000023 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A0000010000000000000022 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A0000010000000000000001 /* iWADemoApp.swift in Sources */,
+				1A0000010000000000000002 /* WalletDemoView.swift in Sources */,
+				1A0000010000000000000003 /* DemoLogRecorder.swift in Sources */,
+				1A00000100000000000000A1 /* HomeView.swift in Sources */,
+				1A00000100000000000000A3 /* ConnectView.swift in Sources */,
+				1A00000100000000000000A5 /* DemoTransactionBuilder.swift in Sources */,
+				1A00000100000000000000C1 /* ReownWalletConnectSolanaTransport.swift in Sources */,
+				1A00000100000000000000C3 /* ReownURLSessionWebSocket.swift in Sources */,
+				1A00000100000000000000B1 /* DemoEnvironment.swift in Sources */,
+				1A00000100000000000000B3 /* IWASecrets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1A0000010000000000000062 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1A0000010000000000000063 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1A0000010000000000000064 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iWADemo/iWADemo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 42RXXMWHUH;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = iWADemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mstevens843.iWADemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1A0000010000000000000065 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iWADemo/iWADemo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 42RXXMWHUH;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = iWADemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mstevens843.iWADemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A0000010000000000000060 /* Build configuration list for PBXProject "iWADemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000010000000000000062 /* Debug */,
+				1A0000010000000000000063 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A0000010000000000000061 /* Build configuration list for PBXNativeTarget "iWADemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A0000010000000000000064 /* Debug */,
+				1A0000010000000000000065 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		1A0000010000000000000030 /* XCLocalSwiftPackageReference "../.." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A0000020000000000000001 /* XCRemoteSwiftPackageReference "reown-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/reown-com/reown-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A0000010000000000000031 /* SolanaWalletAdapter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000010000000000000030 /* XCLocalSwiftPackageReference "../.." */;
+			productName = SolanaWalletAdapter;
+		};
+		1A0000010000000000000032 /* SolanaWalletAdapterPhantom */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000010000000000000030 /* XCLocalSwiftPackageReference "../.." */;
+			productName = SolanaWalletAdapterPhantom;
+		};
+		1A0000010000000000000033 /* SolanaWalletAdapterSolflare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000010000000000000030 /* XCLocalSwiftPackageReference "../.." */;
+			productName = SolanaWalletAdapterSolflare;
+		};
+		1A0000010000000000000034 /* SolanaWalletAdapterBackpack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000010000000000000030 /* XCLocalSwiftPackageReference "../.." */;
+			productName = SolanaWalletAdapterBackpack;
+		};
+		1A0000010000000000000035 /* SolanaWalletAdapterUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000010000000000000030 /* XCLocalSwiftPackageReference "../.." */;
+			productName = SolanaWalletAdapterUI;
+		};
+		1A0000010000000000000036 /* SolanaWalletAdapterPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000010000000000000030 /* XCLocalSwiftPackageReference "../.." */;
+			productName = SolanaWalletAdapterPicker;
+		};
+		1A00000100000000000000B5 /* SolanaWalletAdapterWalletConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000010000000000000030 /* XCLocalSwiftPackageReference "../.." */;
+			productName = SolanaWalletAdapterWalletConnect;
+		};
+		1A0000020000000000000011 /* WalletConnect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000020000000000000001 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = WalletConnect;
+		};
+		1A0000020000000000000012 /* WalletConnectNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000020000000000000001 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = WalletConnectNetworking;
+		};
+		1A0000020000000000000013 /* WalletConnectPairing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A0000020000000000000001 /* XCRemoteSwiftPackageReference "reown-swift" */;
+			productName = WalletConnectPairing;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 1A0000010000000000000050 /* Project object */;
+}

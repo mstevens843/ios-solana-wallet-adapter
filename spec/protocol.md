@@ -38,8 +38,11 @@ iOS provides **no app-chooser** when multiple wallets register the same scheme; 
 | Solflare | `solflare.com` | `solflare` | implemented |
 | Backpack | `backpack.app` | `backpack` | implemented |
 | Glow | TBD | TBD | candidate, pending verification (see `docs/research/glow.md`) |
+| Jupiter Mobile | N/A | N/A | WalletConnect/Reown track; not a native iWA provider (see `docs/research/jupiter.md`) |
 
 Adding a wallet requires (1) a published deeplink spec from the wallet team that conforms to the request/response shape below, and (2) a reference adapter in `Sources/SolanaWalletAdapter<Wallet>/`.
+
+WalletConnect/Reown wallet adapters are out of scope for the native registry above unless the wallet also publishes the native iOS URL-bounce protocol described by this spec. The Swift package includes `SolanaWalletAdapterWalletConnect` as a separate companion target for WalletConnect/Reown Solana JSON-RPC signing.
 
 ## Cryptography
 
@@ -82,6 +85,8 @@ After connect, the same adapter builds encrypted signing URLs and decodes the en
 - `<wallet>_encryption_public_key` (or wallet-specific name like Backpack's `wallet_xxx`) - wallet's X25519 public key, base58.
 - `nonce` - base58, 24 bytes for XSalsa20.
 - `data` - base58 of the NaCl-box ciphertext over a JSON object `{ "public_key": "<user-base58>", "session": "<token>" }`.
+
+Backpack docs have used both `wallet_encryption_public_key` and a placeholder `wallet_xxx` name for this response key; the Swift decoder accepts the exact known names plus `wallet_*` aliases.
 
 **Error response:** `errorCode` and `errorMessage` query params.
 
@@ -143,6 +148,8 @@ Response:
 
 ### `signAndSendTransaction`
 
+Phantom currently marks this method as deprecated in its deeplink docs. dApps should prefer `signTransaction` or `signAllTransactions` and broadcast through their own Solana RPC client when targeting Phantom.
+
 Request:
 
 ```json
@@ -183,6 +190,8 @@ Sessions are not persisted across wallet app restarts unless the wallet chooses 
 
 Wallet-specific `errorCode` strings MUST map cleanly to one of the above. Adapters surface the mapped enum (`WalletAdapterError`) plus the original wallet code/message via `.other(code:message:)`.
 
+The Swift app lifecycle client can also surface local errors that are not wallet `errorCode` values: `.operationInProgress`, `.noPendingRequest`, and `.requestCancelled`.
+
 ## App-chooser problem (informational)
 
 iOS does not surface a system-level chooser when multiple wallets register the same custom URL scheme; the OS routes the request to whichever wallet was installed first. Universal links partially mitigate this because each wallet's `apple-app-site-association` is host-specific, but a user with multiple wallets installed will still get whichever the OS picks.
@@ -193,13 +202,16 @@ iWA-conformant dApps therefore SHOULD:
 - Construct deeplinks against the chosen wallet's specific universal link host.
 - Never use a generic `solana-wallet://` scheme.
 
-## Known gaps for v0.2
+## Known gaps after v0.2 RC
 
 - Multi-tx approval batching with structured display metadata.
-- UIKit / SwiftUI convenience wrappers that call `openURL` and bridge callbacks into async continuations.
 - Real-device smoke logs against Phantom, Solflare, and Backpack.
+- Simulator mock wallet coverage exists for app wiring, but it is not a substitute for installed-wallet validation.
+- Jupiter Mobile real-device smoke through `SolanaWalletAdapterWalletConnect` and a concrete Reown/WalletConnect Swift transport.
+- Jupiter Mobile native deeplink confirmation only if Jupiter later publishes a `/ul/v1` protocol.
+- Non-Solana cluster identifiers such as Backpack's Eclipse cluster value.
 - Hardware wallet hand-off (Ledger over BLE).
-- SIWS (Sign-In With Solana) as a first-class method instead of overloading `signMessage`.
+- Wallet-native SIWS deeplink endpoints if wallets publish them. The current client exposes `signInWithSolana` by constructing a SIWS v1 UTF-8 message and signing it through the existing native `signMessage` method.
 - Deferred-response delivery for cases where the dApp is killed mid-flow.
 - Standardized wallet-discovery resource (so dApps know which wallets are installed without probing each scheme, which iOS limits via `LSApplicationQueriesSchemes`).
 
@@ -208,6 +220,11 @@ iWA-conformant dApps therefore SHOULD:
 - Phantom deeplink docs: <https://docs.phantom.com/phantom-deeplinks/deeplinks-ios-and-android>
 - Solflare deeplink docs: <https://docs.solflare.com/solflare/technical/deeplinks>
 - Backpack deeplink docs: <https://docs.backpack.app/deeplinks/provider-methods/connect>
+- Jupiter Mobile docs: <https://docs.jup.ag/user-docs/manage/mobile>
+- Jupiter Mobile Adapter docs: <https://developers.jup.ag/docs/tool-kits/wallet-kit/jupiter-mobile-adapter>
+- Reown supported chains: <https://docs.reown.com/appkit/networks/supported-chains>
+- WalletConnect Solana methods: <https://docs.walletconnect.network/wallet-sdk/chain-support/solana>
+- Sign In With Solana: <https://github.com/phantom/sign-in-with-solana>
 - Solana Mobile blog (iOS wallet signing): <https://docs.solanamobile.com/blog/ios-wallet-signing>
 - Tokr-Labs/phantom-connect (Swift Phantom-only reference): <https://github.com/Tokr-Labs/phantom-connect>
 - Solflare deep-link sample (React Native): <https://github.com/solflare-wallet/deep-link-sample-app>

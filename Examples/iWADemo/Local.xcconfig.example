@@ -1,0 +1,17 @@
+// iWADemo local configuration template.
+//
+// 1. Copy this file to `Local.xcconfig` (gitignored).
+// 2. Paste your real values below.
+// 3. In Xcode: Select the iWADemo project → iWADemo target →
+//    "Info" tab → set the Debug/Release configuration's "Based On" to Local.xcconfig.
+//    Or set these directly as environment variables in the Run scheme:
+//    Product → Scheme → Edit Scheme → Run → Arguments → Environment Variables.
+//
+// WalletAdapterServiceConfiguration.fromEnvironment() reads these names. The
+// resolution order is: SOLANA_RPC_URL → HELIUS_RPC_URL → public mainnet default.
+
+// SOLANA_CLUSTER = mainnet-beta
+// SOLANA_RPC_URL =
+// HELIUS_RPC_URL = https://mainnet.helius-rpc.com/?api-key=<your-helius-key>
+// JUP_API_URL = https://api.jup.ag
+// JUP_API_KEY =

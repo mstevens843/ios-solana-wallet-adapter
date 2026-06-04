@@ -20,11 +20,12 @@ Source: <https://docs.phantom.com/phantom-deeplinks/deeplinks-ios-and-android>
 
 ## Crypto
 
-- Phantom docs describe encryption as "Diffie-Hellman key exchange" without naming the cipher on the index page.
-- The community Swift reference [`Tokr-Labs/phantom-connect`](https://github.com/Tokr-Labs/phantom-connect) implements **TweetNaCl `box`** (X25519 + XSalsa20-Poly1305) and `nacl.boxKeyPair`. The Flutter port [`StrawHatXYZ/phantom_connect`](https://github.com/StrawHatXYZ/phantom_connect) does the same.
-- TODO: verify by fetching the encryption sub-page directly.
+- Phantom's encryption page documents `dapp_encryption_public_key`, a fresh x25519 keypair for each connect session, and a wallet-returned `phantom_encryption_public_key`.
+- The same page points implementers to TweetNaCl resources for encryption/decryption.
+- The Swift implementation uses CryptoKit X25519 key agreement and a TweetNaCl-compatible NaCl box layer.
 
 ## References
 
 - Brian Friel's "Complete Guide to Phantom Deeplinks": <https://www.brianfriel.xyz/the-complete-guide-to-phantom-deeplinks/>
+- Encryption: <https://docs.phantom.com/phantom-deeplinks/encryption>
 - Tokr-Labs Swift reference: <https://github.com/Tokr-Labs/phantom-connect>

@@ -1,6 +1,8 @@
 .build/
+build/
 .swiftpm/
 DerivedData/
+Examples/iWADemo/build/
 *.xcodeproj/xcuserdata/
 *.xcworkspace/xcuserdata/
 xcuserdata/
@@ -10,7 +12,12 @@ Package.resolved
 *.log
 .DS_Store
 .env
-.env.local
+.env.*
+!.env.example
+Local.xcconfig
+*.local.xcconfig
+# Build-time generated device secrets (baked from .env). Never committed.
+Examples/iWADemo/iWADemo/Generated/
 .idea/
 .vscode/
 coverage/

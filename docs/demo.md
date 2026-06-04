@@ -1,6 +1,6 @@
 # SwiftUI Demo Flow
 
-This repo ships a pure Swift URL/callback adapter. Your app is responsible for opening URLs and receiving callbacks.
+This repo ships both a pure Swift URL/callback adapter and an optional app lifecycle layer in `SolanaWalletAdapterUI`.
 
 ## 1. Pick a Wallet
 
@@ -13,6 +13,21 @@ import SolanaWalletAdapterPhantom
 ```
 
 Swap `PhantomAdapter()` for `SolflareAdapter()` or `BackpackAdapter()` when the user chooses a different wallet.
+
+Use `SimulatorMockWalletProvider()` only for simulator smoke tests. It exercises the same encrypted URL/callback path but is not a real wallet.
+
+For real-device testing, enable deterministic logs:
+
+```swift
+@State private var adapter = WalletAdapter(
+    provider: PhantomAdapter(),
+    cluster: .devnet,
+    logger: WalletAdapterLoggers.print(),
+    logLevel: .debug
+)
+```
+
+See [`logging.md`](./logging.md) for the expected log flow and privacy rules.
 
 ## 2. Connect
 
@@ -38,6 +53,31 @@ Handle the wallet callback:
     } catch {
         print("connect callback failed:", error)
     }
+}
+```
+
+If you prefer async app code, use the UI client:
+
+```swift
+import SolanaWalletAdapterUI
+
+let client = WalletAdapterClient(
+    provider: PhantomAdapter(),
+    appURL: URL(string: "https://example.com")!,
+    redirectLink: URL(string: "myapp://wallet/callback")!,
+    cluster: .devnet,
+    opener: SwiftUIWalletURLOpener(openURL: openURL),
+    stateStore: KeychainWalletAdapterStateStore()
+)
+
+let session = try await client.connect(cluster: .devnet)
+```
+
+Bridge callbacks once:
+
+```swift
+.onOpenURL { url in
+    _ = client.handleOpenURL(url)
 }
 ```
 
@@ -101,4 +141,7 @@ adapter.clearSession()
 - Add the callback scheme to the app's URL types.
 - Prefer universal links for wallet requests.
 - Test one wallet at a time with an explicit wallet picker.
-- Log callback URLs during development, but never log decrypted payloads in production.
+- Enable deterministic iWA logs during smoke testing.
+- Do not log full callback URLs or decrypted payloads in public reports.
+- Use `Mock Wallet (Simulator)` when you do not have a physical iPhone available.
+- Use `Examples/iWADemo` as the reference real-device smoke flow.

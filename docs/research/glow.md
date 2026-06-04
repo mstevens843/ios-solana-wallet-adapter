@@ -16,9 +16,9 @@ Does Glow expose a deeplink/universal-link protocol *in addition to* the Safari 
 
 ## Action
 
-- Ping the Glow team on Twitter/Discord during Phase 2 outreach.
+- Ping the Glow team on Twitter/Discord before adding provider support.
 - Until we have a published deeplink spec from Glow, do **not** list Glow as supported.
-- Do not include Glow in `Package.swift` targets in Phase 1.
+- Do not include Glow in `Package.swift` targets until deeplink support is verified.
 
 ## Why this matters
 

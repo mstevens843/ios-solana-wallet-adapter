@@ -31,12 +31,13 @@ Source: <https://docs.backpack.app/deeplinks/provider-methods/connect>
 
 ## Crypto
 
-- Index references "base58-encoded encryption public key to build a shared secret" + "nonce encoded in base58 used to encrypt the response."
-- Encryption sub-page is referenced (`/deeplinks/encryption.md`) but not yet fetched.
-- TODO: confirm cipher (presumed XSalsa20-Poly1305).
+- Backpack's encryption page documents `dapp_encryption_public_key`, a fresh x25519 keypair for each connect session, and a wallet-returned `wallet_encryption_public_key`.
+- The same page points implementers to TweetNaCl resources for encryption/decryption.
+- The Swift implementation uses CryptoKit X25519 key agreement and a TweetNaCl-compatible NaCl box layer.
 
 ## References
 
 - Connect: <https://docs.backpack.app/deeplinks/provider-methods/connect>
+- Encryption: <https://docs.backpack.app/deeplinks/encryption>
 - SignAndSendTransaction: <https://docs.backpack.app/deeplinks/provider-methods/signandsendtransaction>
 - Backpack Exchange mirror: <https://support.backpack.exchange/wallet/technical-docs/deeplinks/provider-methods/signandsendtransaction>
