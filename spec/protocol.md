@@ -26,6 +26,8 @@ Wallets that support iWA expose endpoints of the form:
 
 `<version>` is `v1` for this draft.
 
+Wallets that publish **no** signing universal-link host (e.g. Jupiter Mobile) are addressed purely via the custom scheme through the **jWA profile** ([`spec/jwa-protocol.md`](./jwa-protocol.md)), which also pins down a mandatory `redirect_link` return contract. The cryptography, payloads, sessions, and error codes are identical to this spec.
+
 The dApp constructs the URL with required query parameters, calls `UIApplication.open` (or `openURL:` from a SwiftUI view), and the OS routes the user into the wallet app. The wallet renders an approval screen, the user accepts or declines, and the wallet calls `redirect_link` (URL-encoded query parameter on every request) with the response payload.
 
 iOS provides **no app-chooser** when multiple wallets register the same scheme; the OS opens the first installed wallet that handles it. iWA-conformant dApps therefore SHOULD select a specific wallet (via the per-wallet adapter) rather than dispatching through a shared scheme.
@@ -38,7 +40,7 @@ iOS provides **no app-chooser** when multiple wallets register the same scheme; 
 | Solflare | `solflare.com` | `solflare` | implemented |
 | Backpack | `backpack.app` | `backpack` | implemented |
 | Glow | TBD | TBD | candidate, pending verification (see `docs/research/glow.md`) |
-| Jupiter Mobile | N/A | N/A | WalletConnect/Reown track; not a native iWA provider (see `docs/research/jupiter.md`) |
+| Jupiter Mobile | N/A (custom scheme) | `jupiter` | jWA custom-scheme profile (`spec/jwa-protocol.md`); dApp adapter shipped + loopback-proven, opt-in and **not** in the registry until on-device confirmation. Real-Jupiter-today still uses the WalletConnect/Reown track (see `docs/research/jupiter.md`). |
 
 Adding a wallet requires (1) a published deeplink spec from the wallet team that conforms to the request/response shape below, and (2) a reference adapter in `Sources/SolanaWalletAdapter<Wallet>/`.
 

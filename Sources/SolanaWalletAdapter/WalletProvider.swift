@@ -1,4 +1,5 @@
 import Foundation
+import SolanaWalletAdapterCore
 
 /// A wallet provider implements the iWA v0.1 protocol for one specific wallet
 /// (Phantom, Solflare, Backpack, ...). Adapters are constructed by the consumer
@@ -13,6 +14,12 @@ public protocol WalletProvider: Sendable {
     /// Custom URL scheme fallback, e.g. "phantom".
     var customScheme: String { get }
 
+    /// Transport used to build every deeplink (connect + signing) for this
+    /// wallet. Defaults to `.universalLink` (Phantom/Solflare/Backpack). The jWA
+    /// profile returns `.customScheme` for wallets that publish no signing
+    /// universal-link host (e.g. Jupiter Mobile). See `spec/jwa-protocol.md`.
+    var deeplinkTransport: DeeplinkURL.Transport { get }
+
     /// Static wallet metadata and method support exposed by client capability
     /// introspection.
     var capabilities: WalletProviderCapabilities { get }
@@ -21,6 +28,12 @@ public protocol WalletProvider: Sendable {
     /// encryption keypair and the redirect destination the wallet should
     /// bounce the user back to.
     func connectURL(request: ConnectRequest) throws -> URL
+}
+
+public extension WalletProvider {
+    /// Default transport. Universal-link wallets (the majority) inherit this;
+    /// custom-scheme wallets override it.
+    var deeplinkTransport: DeeplinkURL.Transport { .universalLink }
 }
 
 /// Parameters required to build a connect deeplink.

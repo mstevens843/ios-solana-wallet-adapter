@@ -18,19 +18,25 @@ public struct WalletBrand: Sendable, Equatable, Identifiable {
     /// `Bundle.module`; falls back to a monogram placeholder when absent.
     public let logoAssetName: String?
     public let brandColorHex: String
+    /// True for wallets surfaced as a preview that need a wallet-side handler to
+    /// fully work (e.g. Jupiter via the jWA profile, `jwa:requires-handler`). Lets
+    /// the picker render an honest "Preview — needs jWA support" affordance.
+    public let requiresHandler: Bool
 
     public init(
         id: String,
         displayName: String,
         urlScheme: String?,
         logoAssetName: String?,
-        brandColorHex: String
+        brandColorHex: String,
+        requiresHandler: Bool = false
     ) {
         self.id = id
         self.displayName = displayName
         self.urlScheme = urlScheme
         self.logoAssetName = logoAssetName
         self.brandColorHex = brandColorHex
+        self.requiresHandler = requiresHandler
     }
 }
 
@@ -63,7 +69,8 @@ public enum WalletBrandRegistry {
         displayName: "Jupiter Mobile",
         urlScheme: nil,
         logoAssetName: "wallet-jupiter",
-        brandColorHex: "#22B388"
+        brandColorHex: "#22B388",
+        requiresHandler: true
     )
 
     public static let defaults: [WalletBrand] = [phantom, solflare, backpack, jupiter]

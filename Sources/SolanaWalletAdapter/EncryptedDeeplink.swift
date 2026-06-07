@@ -235,6 +235,7 @@ public extension WalletProvider {
         return try DeeplinkURL.make(
             host: host,
             method: method,
+            transport: deeplinkTransport,
             params: [
                 ("dapp_encryption_public_key", Base58.encode(keypair.publicKey)),
                 ("nonce", Base58.encode(nonce)),
@@ -311,6 +312,7 @@ public enum WalletResponseDecoder {
         let walletKeyNames = [
             "phantom_encryption_public_key",
             "solflare_encryption_public_key",
+            "jupiter_encryption_public_key",
             "wallet_encryption_public_key",
         ]
         guard let walletKeyName = walletEncryptionPublicKeyName(in: params, knownNames: walletKeyNames),

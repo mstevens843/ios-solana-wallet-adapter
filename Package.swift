@@ -25,8 +25,20 @@ let package = Package(
             targets: ["SolanaWalletAdapterBackpack"]
         ),
         .library(
+            name: "SolanaWalletAdapterJupiter",
+            targets: ["SolanaWalletAdapterJupiter"]
+        ),
+        .library(
+            name: "SolanaWalletAdapterJupiterHandler",
+            targets: ["SolanaWalletAdapterJupiterHandler"]
+        ),
+        .library(
             name: "SolanaWalletAdapterWalletConnect",
             targets: ["SolanaWalletAdapterWalletConnect"]
+        ),
+        .library(
+            name: "SolanaWalletAdapterReturnUX",
+            targets: ["SolanaWalletAdapterReturnUX"]
         ),
         .library(
             name: "SolanaWalletAdapterUI",
@@ -58,8 +70,19 @@ let package = Package(
             dependencies: ["SolanaWalletAdapter", "SolanaWalletAdapterCore"]
         ),
         .target(
+            name: "SolanaWalletAdapterJupiter",
+            dependencies: ["SolanaWalletAdapter", "SolanaWalletAdapterCore"]
+        ),
+        .target(
+            name: "SolanaWalletAdapterJupiterHandler",
+            dependencies: ["SolanaWalletAdapter", "SolanaWalletAdapterCore"]
+        ),
+        .target(
             name: "SolanaWalletAdapterWalletConnect",
             dependencies: ["SolanaWalletAdapter", "SolanaWalletAdapterCore"]
+        ),
+        .target(
+            name: "SolanaWalletAdapterReturnUX"
         ),
         .target(
             name: "SolanaWalletAdapterUI",
@@ -69,6 +92,7 @@ let package = Package(
                 "SolanaWalletAdapterPhantom",
                 "SolanaWalletAdapterSolflare",
                 "SolanaWalletAdapterBackpack",
+                "SolanaWalletAdapterJupiter",
             ]
         ),
         .target(
@@ -92,6 +116,8 @@ let package = Package(
                 "SolanaWalletAdapterPhantom",
                 "SolanaWalletAdapterSolflare",
                 "SolanaWalletAdapterBackpack",
+                "SolanaWalletAdapterJupiter",
+                "SolanaWalletAdapterJupiterHandler",
                 "SolanaWalletAdapterWalletConnect",
                 "SolanaWalletAdapterUI",
                 "SolanaWalletAdapterPicker",
