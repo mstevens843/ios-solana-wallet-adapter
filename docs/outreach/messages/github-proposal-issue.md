@@ -6,6 +6,8 @@ Proposal: native, Reown-free auto-return for Jupiter Mobile (jWA), with a refere
 
 # Body
 
+Hey, I maintain an open-source iOS Solana wallet adapter (Phantom, Solflare, Backpack today) and I'd like to add Jupiter Mobile. Short proposal below, and I'm offering to do the work.
+
 The problem
 
 Native iOS dApps can connect and sign with Jupiter Mobile through Reown, but the user never gets sent back to the dApp after they approve (same root cause as #1). On iOS only the foreground wallet can fire the return, so the fix has to live inside the Jupiter app.
