@@ -2,7 +2,7 @@
 
 This is the security writeup for the open-source jWA wallet-side handler (`SolanaWalletAdapterJupiterHandler`). It is written for a wallet's security reviewers who are deciding whether to integrate it. Everything below is verifiable against the source in this repo.
 
-## The one thing that matters
+## Trust model
 
 Adopting the handler does not widen your trust boundary. It never holds private keys and it never signs without your approval, so the worst case is bounded by the controls you already own: your keystore and your approval UI. The handler is an encrypted message router, not a key manager and not a signer.
 
@@ -32,7 +32,7 @@ It depends only on `SolanaWalletAdapter` and `SolanaWalletAdapterCore` in this r
 
 6. Standard, well-known crypto. x25519 ECDH via Apple CryptoKit, NaCl box (XSalsa20-Poly1305) via a vendored TweetNaCl implementation, base58 wire encoding. This is the same scheme used by the Phantom, Solflare, and Backpack deeplink flows that the ecosystem already relies on. Nothing here is novel or homegrown beyond the standard primitives.
 
-## What it does not protect against, and the fixes
+## What it does not protect against
 
 - A malicious dApp can request a bad transaction. This is true of any wallet connection method. The defense is the wallet showing the user what they are signing and the user approving, which jWA preserves and feeds with the decoded content. jWA does not weaken this.
 - Custom URL schemes on iOS can be registered by more than one app, and the OS resolves collisions with no chooser. This is true for every deeplink wallet, not specific to jWA. The clean fix is to also serve the protocol over a universal link via your `apple-app-site-association`, which is cryptographically bound to your app and cannot be hijacked. jWA already supports the universal-link transport with no other changes; the custom scheme stays as a fallback.
